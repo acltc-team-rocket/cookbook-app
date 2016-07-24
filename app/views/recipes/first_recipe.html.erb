@@ -1,1 +1,9 @@
-<img src="<%= @image %>">
+<ul>
+  <li><%= @last_recipe.title %></li>
+  <li><%= @last_recipe.chef %></li>
+  <li><%= @last_recipe.directions %></li>
+  <li><%= @last_recipe.ingredients %></li>
+  <li><%= @last_recipe.prep_time %></li>
+</ul>
+
+<img src="<%= @last_recipe.image %>">
