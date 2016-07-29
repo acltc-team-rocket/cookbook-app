@@ -11,9 +11,9 @@
         <th>Prep Time</th>
         <th>Image</th>
       </tr>
-      <% @all_recipes.each do |recipe| %>
+      <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= recipe.title %></td>
+        <td><%= link_to recipe.title, "/recipes/#{recipe.id}" %></td>
         <td><%= recipe.chef %></td>
         <td><%= recipe.directions %></td>
         <td><%= recipe.ingredients %></td>

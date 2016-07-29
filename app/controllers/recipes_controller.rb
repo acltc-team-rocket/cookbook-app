@@ -1,27 +1,45 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    sort_attribute = params[:sort_attribute]
+    if sort_attribute
+      @recipes = Recipe.order(sort_attribute)
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show
-    @recipes = Recipe.find_by(id: params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
   end
 
   def new
   end
 
   def create
-    name = params[:name]
-    price = params[:price]
-    description = params[:description]
+    title = params[:title]
+    chef = params[:chef]
+    ingredients = params[:ingredients]
+    directions = params[:directions]
+    prep_time = params[:prep_time]
     image_url = params[:image]
-    product = Product.new(name: name, price: price, description: description, image: image_url)
-    product.save
+    recipe = Recipe.new(title: title, chef: chef, ingredients: ingredients, directions: directions, prep_time: prep_time, image: image_url)
+    recipe.save
+    redirect_to "/recipes/#{@recipe.id}"
+    
   end
 
-  def edit
-    @id = params[:id]
+  def edit  
+    @recipe = Recipe.find_by(id: params[:id])
   end
+
+  def update
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe.update_attributes(title: params[:title], chef: params[:chef], ingredients: params[:ingredients], directions: params[:directions], prep_time: params[:prep_time], image: params[:image])
+    @recipe.save
+    redirect_to "/recipes/#{@recipe.id}"
+  end
+
+
 
 end

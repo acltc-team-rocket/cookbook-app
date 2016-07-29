@@ -1,9 +1,15 @@
 <ul>
-  <li><%= @last_recipe.title %></li>
-  <li><%= @last_recipe.chef %></li>
-  <li><%= @last_recipe.directions %></li>
-  <li><%= @last_recipe.ingredients %></li>
-  <li><%= @last_recipe.prep_time %></li>
+  <li>Title: <%= @recipe.title %></li>
+  <li>Chef: <%= @recipe.chef %></li>
+  <li>Directions: <%= @recipe.directions %></li>
+    <ul>Ingredients: 
+    <% @recipe.ingredients_split.each do |ingredient| %>
+      <li><%= ingredient %></li>
+    <% end %>      
+    </ul>
+  </li>
+  <li>Created At: <%= @recipe.human_friendly_time %></li>
+  <li>Prep Time: <%= @recipe.friendly_prep_time %></li>
 </ul>
 
-<img src="<%= @last_recipe.image %>">
+<img src="<%= @recipe.image %>">
