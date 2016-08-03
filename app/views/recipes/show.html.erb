@@ -1,6 +1,6 @@
 <ul>
   <li>Title: <%= @recipe.title %></li>
-  <li>Chef: <%= @recipe.chef %></li>
+  <li>Chef: <%= @recipe.user.name %></li>
   <li>Directions: <%= @recipe.directions %></li>
     <ul>Ingredients: 
     <% @recipe.ingredients_split.each do |ingredient| %>

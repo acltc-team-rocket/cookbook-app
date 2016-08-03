@@ -18,14 +18,13 @@ class RecipesController < ApplicationController
 
   def create
     title = params[:title]
-    chef = params[:chef]
     ingredients = params[:ingredients]
     directions = params[:directions]
     prep_time = params[:prep_time]
     image_url = params[:image]
-    recipe = Recipe.new(title: title, chef: chef, ingredients: ingredients, directions: directions, prep_time: prep_time, image: image_url)
+    recipe = Recipe.new(title: title, user_id: current_user.id, ingredients: ingredients, directions: directions, prep_time: prep_time, image: image_url)
     recipe.save
-    redirect_to "/recipes/#{@recipe.id}"
+    redirect_to "/recipes/#{recipe.id}"
     
   end
 
